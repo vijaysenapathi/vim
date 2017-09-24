@@ -14,6 +14,21 @@ Plugin 'dracula/vim'
 " Nerd tree
 "Plugin 'scrooloose/nerdtree'
 
+" Git integration
+Plugin 'tpope/vim-fugitive'
+
+" For viewing git changes on the fly
+Plugin 'airblade/vim-gitgutter'
+
+" Surrounding operator
+Plugin 'tpope/vim-surround'
+
+" Repeat for plugins
+Plugin 'tpope/vim-repeat'
+
+" For commenting
+" Plugin 'scrooloose/nerdcommenter'
+
 " For seamless tmux vim navigation
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -33,9 +48,12 @@ syntax on " turns the syntax on
 
 " sets the color scheme to dracula
 color dracula
+
+" fixes visual selection making comments hard to see
 hi Visual ctermbg=238
 
 filetype plugin indent on
+
 " make tab expand to spaces
 set expandtab
 " number of columns an existing <TAB> will occupy
@@ -44,6 +62,17 @@ set tabstop=2
 set shiftwidth=2
 " make pressing tab insert 2 columns
 set softtabstop=2
+
+" wrap text
+set wrap
+" wrap without breaking words
+set linebreak
+" screen line navigation
+map <Up> gk
+map <Down> gj
+
+" searches by ignoring case only if all letters are small
+set ignorecase smartcase
 
 " powerline config
 set guifont=monaco\ for\ Powerline
@@ -87,3 +116,9 @@ set viminfo='1000,<1000,s10,h,/1000,@1000,:1000
 " Show match bracket 
 set showmatch
 set matchtime=15
+
+" make cim show the command thats being entered
+set showcmd
+
+" Disable git gutter on startup
+GitGutterDisable
