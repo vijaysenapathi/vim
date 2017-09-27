@@ -12,7 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'dracula/vim'
 
 " Nerd tree
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
@@ -30,7 +30,16 @@ Plugin 'tpope/vim-repeat'
 " Plugin 'scrooloose/nerdcommenter'
 
 " For seamless tmux vim navigation
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
+
+" Autocompletion engine
+" Plugin 'Valloric/YouCompleteMe'
+
+" Snippets engine
+Plugin 'sirver/ultisnips'
+
+" Actual snippets
+" Plugin 'honza/vim-snippets'
 
 " Distraction free editing
 Plugin 'junegunn/goyo.vim'
@@ -90,7 +99,7 @@ set wildmenu
 set incsearch
 
 " Sets the cursor to remain in the middle of the page
-set scrolloff=999
+" set scrolloff=999
 
 " Make vim remember a lot
 set history=1000
@@ -114,11 +123,33 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 set viminfo='1000,<1000,s10,h,/1000,@1000,:1000
 
 " Show match bracket 
-set showmatch
-set matchtime=15
+" set showmatch
+" set matchtime=15
 
 " make cim show the command thats being entered
 set showcmd
 
-" Disable git gutter on startup
-GitGutterDisable
+" Make vim scrolling faster
+set regexpengine=1
+set nocursorline
+set nocursorcolumn
+let loaded_matchparen=1 
+
+" Set gitgutter not autoload at start
+let g:gitgutter_enabled = 0
+
+" File specific configuration
+au FileType ruby source ~/.vim/scripts/ruby.vim
+au FileType java source ~/.vim/scripts/java.vim
+
+" Ultisnips configuration
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Disable ycm's tab
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
