@@ -30,22 +30,16 @@ Plugin 'tpope/vim-repeat'
 " Plugin 'scrooloose/nerdcommenter'
 
 " For seamless tmux vim navigation
-" Plugin 'christoomey/vim-tmux-navigator'
-
-" Autocompletion engine
-" Plugin 'Valloric/YouCompleteMe'
-
-" Snippets engine
-Plugin 'sirver/ultisnips'
-
-" Actual snippets
-" Plugin 'honza/vim-snippets'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Distraction free editing
 Plugin 'junegunn/goyo.vim'
 
 " Power line status bar
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Better javascript support
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -56,10 +50,13 @@ set relativenumber
 syntax on " turns the syntax on
 
 " sets the color scheme to dracula
-color dracula
+colorscheme dracula
 
 " fixes visual selection making comments hard to see
-hi Visual ctermbg=238
+highlight Visual ctermbg=238
+
+" turns tildes in the left margin to a dull color
+" highlight NonText ctermfg=236
 
 filetype plugin indent on
 
@@ -99,7 +96,7 @@ set wildmenu
 set incsearch
 
 " Sets the cursor to remain in the middle of the page
-" set scrolloff=999
+set scrolloff=999
 
 " Make vim remember a lot
 set history=1000
@@ -123,11 +120,14 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 set viminfo='1000,<1000,s10,h,/1000,@1000,:1000
 
 " Show match bracket 
-" set showmatch
-" set matchtime=15
+set showmatch
+set matchtime=15
 
-" make cim show the command thats being entered
+" make vim show the command thats being entered
 set showcmd
+
+" make jj as a replacement for Esc
+inoremap jj <Esc>
 
 " Make vim scrolling faster
 set regexpengine=1
@@ -141,15 +141,3 @@ let g:gitgutter_enabled = 0
 " File specific configuration
 au FileType ruby source ~/.vim/scripts/ruby.vim
 au FileType java source ~/.vim/scripts/java.vim
-
-" Ultisnips configuration
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-" Disable ycm's tab
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
